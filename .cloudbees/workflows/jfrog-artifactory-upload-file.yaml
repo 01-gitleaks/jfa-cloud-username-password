@@ -19,7 +19,7 @@ jobs:
         with:
           registry: cbunifydev.jfrog.io
           username: svaradhan@cloudbees.com
-          password: ${{ secrets.JFROG_TOKEN }}
+          password: ${{ secrets.SV_JFROG_TOKEN }}
 
       - id: build-container
         name: Build and push container image to JFrog
