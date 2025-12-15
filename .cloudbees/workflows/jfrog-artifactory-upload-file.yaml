@@ -17,15 +17,15 @@ jobs:
       - name: Configure JFrog OCI credentials
         uses: cloudbees-io/configure-oci-credentials@v1
         with:
-          registry: cbunifydev.jfrog.io
-          username: svaradhan@cloudbees.com
+          registry: cbjfrog.saas-preprod.beescloud.com
+          username: admin
           password: ${{ secrets.SV_JFROG_TOKEN }}
 
       - id: build-container
         name: Build and push container image to JFrog
         uses: cloudbees-io/kaniko@v1
         with:
-          destination: cbunifydev.jfrog.io/docker-trial/exposures:latest
+          destination: cbjfrog.saas-preprod.beescloud.com/jfrog-test-docker-target-repo/test-image:1.0.0
           build-args: USER=cbp-dev,TOKEN=${{ secrets.GH_SECURITY_PAT }}
           context: ${{ cloudbees.workspace }}
           dockerfile: Dockerfile
